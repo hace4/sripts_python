@@ -1,5 +1,4 @@
 import sqlite3
-from unittest import result
 
 class Database:
     def __init__(self, db_file):
