@@ -15,7 +15,7 @@ import aioschedule, time
 
 bot = Bot(token=Token)
 dp = Dispatcher(bot)
-db = Database("C:\\Users\\shmel\\OneDrive\\Рабочий стол\\sripts_python\\Shadiwal\\Database.db")
+db = Database("C:\\Users\\shmel\\OneDrive\\Рабочий стол\\sripts_python\\Shadiwal\\database.db")
 
 main_button = ['Расписание сегодня', 'Доп функции', 'Расписание на завтра', 'Расписание Звонков']
 
