@@ -2,22 +2,23 @@ import pygame
 import random
 from math import sin, cos, radians
 
-SCREEN_WIDTH = 1600
-SCREEN_HEIGHT = 900
-BG_COLOR = (250, 100, 50)
-PADDLE_COLOR = (20, 20, 20)
-GUN_COLOR = (250, 250, 250)
-STAND_COLOR = (46, 102, 159)
+SCREEN_WIDTH = 1400
+SCREEN_HEIGHT = 800
+PADDLE_COLOR = (102, 51, 0)
+STAND_COLOR = (102, 51, 0)
 
-field = pygame.Rect(0, SCREEN_HEIGHT - 100,  SCREEN_WIDTH, 100)
-stand = pygame.Rect((SCREEN_WIDTH / 2 - 100),SCREEN_HEIGHT - 140 , 200, 40)
+field = pygame.Rect(0, SCREEN_HEIGHT - 50,  SCREEN_WIDTH, 50)
+stand = pygame.Rect((SCREEN_WIDTH / 2 - 80),SCREEN_HEIGHT - 110, 30, 60)
+stand1 = pygame.Rect((SCREEN_WIDTH / 2 + 50),SCREEN_HEIGHT - 110 , 30, 60)
+stand2 = pygame.Rect((SCREEN_WIDTH / 2 - 80),SCREEN_HEIGHT - 120 , 160, 10)
 
 offset = pygame.math.Vector2(0, -25)
 pivot = [(SCREEN_WIDTH / 2), SCREEN_HEIGHT - 120]
 angle = 0
 speed = -400
 
-player_img = pygame.image.load("gun1.png")
+background_image = pygame.image.load('2e3c5f1686e7c345387be86446eb74dc.jpeg')
+player_img = pygame.image.load("gun3.png")
 pygame.init()
 clock = pygame.time.Clock()
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
@@ -81,7 +82,7 @@ while run:
     if keys[pygame.K_SPACE]:
         bullet2 = PVOBULLET((SCREEN_WIDTH / 2 + (sin(radians(angle)) * 120)), (SCREEN_HEIGHT - (120 + cos(radians(angle)) * 120)),speed, speed, angle + 90)     
     rotated_image, rect = rotate(player_img, angle, pivot, offset)
-    screen.fill(BG_COLOR)
+    screen.blit(background_image, (0, 0))
     bulet1.move()
     bulet1.spawn()
     bullet2.spawn()
@@ -90,6 +91,8 @@ while run:
     screen.blit(rotated_image, rect)
     pygame.draw.rect(screen, PADDLE_COLOR, field)
     pygame.draw.rect(screen, STAND_COLOR, stand)
+    pygame.draw.rect(screen, STAND_COLOR, stand1)
+    pygame.draw.rect(screen, STAND_COLOR, stand2)
     
     if ((abs(bullet2.x - bulet1.x) <= 25) and(abs(abs(bullet2.y - bulet1.y) <= 25)) ):
         bullet2 = PVOBULLET((0 / 2 + (sin(radians(angle)) * 120)), (0 - (120 + cos(radians(angle)) * 120)),speed, speed, angle + 90)
@@ -98,7 +101,7 @@ while run:
         bulet1.speedx = random.randint(-3, 3) + 1
         bulet1.speedy = random.randint(3, 3) + 1
 
-    if bulet1.y >= 800 or bulet1.x <= 0 or bulet1.x >= 1600:
+    if bulet1.y >= 800 or bulet1.x <= 0 or bulet1.x >= 1400:
         bulet1.x = random.randint(100, 1500)
         bulet1.y = random.randint(50, 500)
         bulet1.speedx = random.randint(-3, 3)+1
