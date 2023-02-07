@@ -10,18 +10,19 @@ class PVO():
         # Add the offset vector to the center/pivot point to shift the rect.
         rect = rotated_image.get_rect(center=pivot+rotated_offset)
         return rotated_image, rect  # Return the rotated image and shifted rect.
-    def bullet(X, Y):
-       pygame.draw.circle(screen, "WHITE", (Y, X), 25)
-    def bullet_angry():
 
-       pygame.draw.circle(screen, "GREEN", (200, 200), 25)
+class Bullet():
+    def __init__(self, x, y, color, ):
+        self.x = x
+        self.y = y
+        self.color = color
+        self.vel = 8
+    def draw(self, screen):
+         pygame.draw.circle(screen, self.color,(self.x, self.y), 3)
 
-    def bullet_move(X, Y):
-        while X != 200 and Y != 150:
-            X -= 1
-            Y -= 1
-            print(X, Y)
-        return X, Y
+        
+    
+
 
 SCREEN_WIDTH = 1024
 SCREEN_HEIGHT = 576
@@ -51,23 +52,27 @@ pygame.display.set_caption("AirDefense")
 X = 300
 Y = 300
 run = True
-F = False
+bullets = []
 while run:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
+    for bullet in bullets:
+        if bullet.x < 500 and  bullet.x >0:
+            bullet.x += int(bullet.vel)
+        else:
+            bullets.pop(bullets.index(bullet))
     keys = pygame.key.get_pressed()
     if keys[pygame.K_d]:
             angle += 5
     elif keys[pygame.K_a]:
             angle -= 5
     elif keys[pygame.K_SPACE]:
-            X, Y = PVO.bullet_move(X, Y)
-        # if event.type == pygame.KEYUP:
-        #     if event.key == pygame.K_w:
-        #         player_img = pygame.transform.rotate(player_img, -15)
-        #     elif event.key == pygame.K_s:e
-        #         player_img = pygame.transform.rotate(player_img, 15)
+            if len(bullets) < 5:
+                bullets.append(Bullet(round((SCREEN_WIDTH / 2-65)), 40, "BLACK"))
+                
+                
+
     rotated_image, rect = PVO.rotate(player_img, angle, pivot, offset)
     screen.fill(BG_COLOR)
     screen.blit(rotated_image, rect)
@@ -76,8 +81,6 @@ while run:
     pygame.draw.rect(screen, PADDLE_COLOR, field)
     pygame.draw.rect(screen, STAND_COLOR, stand)
 
-    PVO.bullet(X, Y)
-    PVO.bullet_angry()
     if X ==200 and  Y == 200:
             #### del func i want fuck and i lazy
             pass
