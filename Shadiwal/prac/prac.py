@@ -40,7 +40,7 @@ def rotate(surface, angle, pivot, offset):
     return rotated_image, rect 
 
 
-class BULLET():
+class (BULLET):
     def __init__(self, x, y, speed) -> None:
          self.x = x
          self.y = y
