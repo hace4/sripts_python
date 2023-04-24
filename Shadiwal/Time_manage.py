@@ -1,7 +1,7 @@
 
 import openpyxl
 from datetime import datetime
-
+import os
 
 plan = []
 plan_2 = []
@@ -29,30 +29,9 @@ weekday_exel = {
     }
 
 
-def next_day(name):
-    book = openpyxl.open("Shadiwal\\file_save\\"+ name +".xlsx", read_only=True)
-    classR = ''
-    Result_stroke = ''
+def next_day(name): 
+    book = openpyxl.open(os.path.realpath('file_save/'+name+".xlsx"), read_only=True)
 
-    next_day = datetime.weekday(datetime.now()) + 1
-    sheet = book.active
-
-    days = day_exel[sheet[weekday_exel[next_day]][0].value]
-    next_day_main = sheet[days[0] : days[-1]]
-    for lessons, group, teacher, classrom in next_day_main:
-            if type(classrom.value) == float:
-                classR = '%.0f' % classrom.value
-            else:
-                classR = classrom.value
-            plan_2.append((lessons.value, group.value, teacher.value, classR))
-
-    for stroke_lines in plan_2[:-2]:
-       Result_stroke += ' '.join(map(str, stroke_lines)) + '\n'
-    return Result_stroke
-
-
-def next_day(name):
-    book = openpyxl.open("Shadiwal\\file_save\\"+ name +".xlsx", read_only=True)
     classR = ''
     Result_stroke = ''
 
@@ -73,10 +52,11 @@ def next_day(name):
     return Result_stroke
 
 def main(name):
-    book = openpyxl.open("Shadiwal\\file_save\\"+ name +".xlsx", read_only=True)
+    
+    book = openpyxl.open(os.path.realpath('file_save/'+name+".xlsx"), read_only=True)
 
     Result_stroke = ''
-
+    classR = ''
     day = datetime.weekday(datetime.now())
     sheet = book.active
 
