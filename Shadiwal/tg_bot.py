@@ -16,7 +16,7 @@ import aioschedule, time
 bot = Bot(token=Token)
 dp = Dispatcher(bot)
 db = Database("database.db")
-print('a')
+
 main_button = ['Расписание сегодня', 'Расписание на завтра', 'Расписание Звонков']
 
 @dp.message_handler(commands='start')

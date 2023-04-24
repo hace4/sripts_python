@@ -49,8 +49,10 @@ def next_day(name):
     for stroke_lines in plan_2[:-2]:
        Result_stroke += ' '.join(map(str, stroke_lines)) + '\n'
     return Result_stroke
+
+
 def next_day(name):
-    book = openpyxl.open("C:\\Users\\shmel\\OneDrive\\Рабочий стол\\sripts_python\\Shadiwal\\file_save\\"+ name +".xlsx", read_only=True)
+    book = openpyxl.open("Shadiwal\\file_save\\"+ name +".xlsx", read_only=True)
     classR = ''
     Result_stroke = ''
 
@@ -71,7 +73,7 @@ def next_day(name):
     return Result_stroke
 
 def main(name):
-    book = openpyxl.open("C:\\Users\\shmel\\OneDrive\\Рабочий стол\\sripts_python\\Shadiwal\\file_save\\"+ name +".xlsx", read_only=True)
+    book = openpyxl.open("Shadiwal\\file_save\\"+ name +".xlsx", read_only=True)
 
     Result_stroke = ''
 
