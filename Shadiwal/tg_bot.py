@@ -15,7 +15,7 @@ import aioschedule, time
 
 bot = Bot(token=Token)
 dp = Dispatcher(bot)
-db = Database("Shadiwal\\database.db")
+db = Database("database.db")
 print('a')
 main_button = ['Расписание сегодня', 'Расписание на завтра', 'Расписание Звонков']
 
@@ -66,6 +66,6 @@ async def Plan(msg: types.Message):
         await msg.answer(Time_manage.main(db.get_nick_name(msg.from_user.id)))
         Time_manage.plan = []
 
-if __name__ == '__main__':
-    executor.start_polling(dp)
+if __name__ == '__main__':  
     print('bot-start')
+    executor.start_polling(dp)
