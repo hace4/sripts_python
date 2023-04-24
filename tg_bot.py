@@ -12,7 +12,6 @@ from translation import txt_translate
 import Time_manage
 import aioschedule, time
 
-
 bot = Bot(token=Token)
 dp = Dispatcher(bot)
 db = Database("database.db")
