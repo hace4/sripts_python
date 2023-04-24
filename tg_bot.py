@@ -26,10 +26,6 @@ async def start(message: types.Message):
         @dp.message_handler()
         async def bot_read(message: types.Message):
             db.set_nickname(message.from_user.id, message.text)
-            print(message.from_user.id)
-            print(message.from_user.first_name)
-            print(message.from_user.last_name)
-            print(message.from_user.username)
             await bot.send_message(message.from_user.id, 'Напишите /start')
 
     else:
@@ -49,14 +45,13 @@ async def Plan2(msg: types.Message):
 async def Plan2(msg: types.Message):     
         await msg.answer('''
 Начало       конец       перемена
-09:00:00    09:45:00     10 минут
-09:55:00    10:40:00     20 минут
-11:00:00    11:45:00     20 минут
-12:05:00    12:50:00     10 минут
-13:00:00    13:45:00     20 минут
-14:05:00    14:50:00     20 минут
-15:10:00    15:55:00     10 минут
-16:05:00    16:50:00     10 минут
+08:30:00    09:15:00     10 минут
+09:25:00    10:10:00     20 минут
+10:30:00    11:15:00     15 минут
+11:35:00    12:20:00     15 минут
+12:35:00    13:20:00     20 минут
+13:40:00    14:25:00     15 минут
+14:40:00    15:25:00     10 минут
                     ''')
         
 
