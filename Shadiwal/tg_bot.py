@@ -4,7 +4,7 @@ from aiogram import Bot, Dispatcher, executor, types
 from aiogram.types.reply_keyboard import ReplyKeyboardMarkup
 
 from aiogram.dispatcher.filters import Text
-print('b')
+
 from db import Database
 
 from translation import txt_translate
@@ -68,6 +68,4 @@ async def Plan(msg: types.Message):
 
 if __name__ == '__main__':
     executor.start_polling(dp)
-    aioschedule.every(0.1).seconds.do(Plan)
-    while True:
-        aioschedule.run_pending()
+    print('bot-start')
