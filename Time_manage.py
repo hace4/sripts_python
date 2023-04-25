@@ -13,10 +13,6 @@ day_exel = {
     'Среда' : ['B27', 'E34'],
     'Четверг' : ['B39', 'E46'],
     "Пятница" : ['B51','E58'],
-    'Суббота' : ['B64','E68']
-    }
-day_exetime_xls = {
-    'Звонки' : ['B15', 'D23'],
     }
 
 weekday_exel = {
@@ -25,12 +21,11 @@ weekday_exel = {
     2 : 25,
     3 : 37,
     4 : 49,
-    5 : 61
     }
 
 
 def next_day(name): 
-    book = openpyxl.open(os.path.realpath('file_save/'+name+".xlsx"), read_only=True)
+    book = openpyxl.open(os.path.realpath('file_save/'+name.lower()+".xlsx"), read_only=True)
 
     classR = ''
     Result_stroke = ''
@@ -53,7 +48,7 @@ def next_day(name):
 
 def main(name):
     
-    book = openpyxl.open(os.path.realpath('file_save/'+name+".xlsx"), read_only=True)
+    book = openpyxl.open(os.path.realpath('file_save/'+name.lower()+".xlsx"), read_only=True)
 
     Result_stroke = ''
     classR = ''
